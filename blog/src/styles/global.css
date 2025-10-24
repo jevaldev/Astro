@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary-900: #031926;
+  --color-primary-700: #094e71;
+  --color-primary-500: #468189;
+  --color-primary-300: #77ACA2;
+  --color-primary-100: #9DBEBB;
+  --color-secondary: #F4E9CD;
+  --color-accent: #E5E5E5;
+}
+
+body {
+  background-color: var(--color-primary-900);
+}
+
+main {
+  width: min(1000px, 100% - 2rem);
+}
