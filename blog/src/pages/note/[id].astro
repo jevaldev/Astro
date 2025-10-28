@@ -1,0 +1,59 @@
+---
+import { supabase } from "../../lib/supabaseClient";
+import { marked } from "marked";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const { data: notes, error } = await supabase.from("notes").select("*");
+  console.log(notes);
+
+  if (error) {
+    console.error("Error fetching notes:", error);
+    return [];
+  }
+
+  return notes.map((note) => ({
+    params: { id: note.id.toString() },
+    props: {
+      note,
+      htmlContent: marked(note.content),
+    },
+  }));
+}
+
+const { note, htmlContent } = Astro.props;
+---
+
+<Layout>
+  <main class="min-h-screen max-w-3xl mx-auto py-10 px-4">
+    {
+      note ? (
+        <>
+          <a href="/" class="text-primary-300 hover:underline">
+            ← Back to notes ñ
+          </a>
+
+          <article class="mt-6">
+            <h1 class="text-accent text-4xl font-bold mb-4">{note.title}</h1>
+
+            <ul class="flex flex-wrap gap-2 mb-6">
+              {note.tags?.map((tag: string) => (
+                <li class="text-xs font-medium bg-primary-900/50 text-secondary px-2 py-2 rounded-md">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+
+            <div
+              class="prose prose-invert max-w-none prose-pre:p-6 prose-pre:rounded-xl prose-pre-bg-[#111827] prose-pre:overflow-x-auto prose-code:text-sm prose-code:text-accent prose-code:font-mono"
+              set:html={htmlContent}
+            />
+          </article>
+        </>
+      ) : (
+        <p>Nota no encontrada</p>
+      )
+    }
+  </main>
+</Layout>
