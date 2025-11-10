@@ -13,8 +13,22 @@
 
 body {
   background-color: var(--color-primary-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  header {
+    width: min(1000px, 100% - 2rem);
+  }
 }
 
 main {
   width: min(1000px, 100% - 2rem);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-block: 2rem;
+  gap: 1rem;
 }

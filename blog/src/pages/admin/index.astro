@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AdminLogin from "../../components/AdminLogin.tsx";
+---
+
+<Layout>
+  <main class="">
+    <h1 class="text-3xl font-bold">Admin - Iniciar sesión</h1>
+
+    <body>
+      <AdminLogin client:load />
+    </body>
+  </main>
+</Layout>
