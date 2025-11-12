@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* 031926 */
+
 @theme {
-  --color-primary-900: #031926;
+  --color-primary-900: #1c2b30;
   --color-primary-700: #094e71;
   --color-primary-500: #468189;
   --color-primary-300: #77ACA2;
@@ -18,7 +20,10 @@ body {
   align-items: center;
   
   header {
-    width: min(1000px, 100% - 2rem);
+    width: 100%;
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    background-color: #031926;
   }
 }
 
@@ -28,7 +33,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
   padding-block: 2rem;
   gap: 1rem;
 }

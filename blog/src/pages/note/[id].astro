@@ -1,7 +1,7 @@
 ---
 import { supabase } from "../../lib/supabaseClient";
 import { marked } from "marked";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@layout/Layout.astro";
 
 export async function getStaticPaths() {
   const { data: notes, error } = await supabase.from("notes").select("*");

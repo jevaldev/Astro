@@ -1,0 +1,11 @@
+---
+import Layout from "@layout/Layout.astro";
+import AdminDashboard from "@comp/Admin/AdminDashboard.tsx";
+---
+
+<Layout>
+  <main>
+    <h1>Dashboard Admin</h1>
+    <AdminDashboard client:load />
+  </main>
+</Layout>
